@@ -1,0 +1,24 @@
+body {
+  font-family: Arial;
+  background: #87CEEB;
+  text-align: center;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+input {
+  padding: 10px;
+  width: 200px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#weather {
+  margin-top: 20px;
+  font-size: 18px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Folder Architect</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+    }
+    .folder {
+      margin: 10px;
+      padding: 10px;
+      border: 2px solid black;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Folder Architect</h2>
+
+<input type="text" id="folderName" placeholder="Enter folder name">
+<button onclick="createFolder()">Create Folder</button>
+
+<div id="folders"></div>
+
+<script>
+function createFolder() {
+  let name = document.getElementById("folderName").value;
+
+  if (name === "") {
+    alert("Enter folder name");
+    return;
+  }
+
+  let folder = document.createElement("div");
+  folder.className = "folder";
+  folder.innerHTML = name + 
+    "<br><button onclick='deleteFolder(this)'>Delete</button>";
+
+  document.getElementById("folders").appendChild(folder);
+
+  document.getElementById("folderName").value = "";
+}
+
+function deleteFolder(btn) {
+  btn.parentElement.remove();
+}
+</script>
+
+</body>
+</html>

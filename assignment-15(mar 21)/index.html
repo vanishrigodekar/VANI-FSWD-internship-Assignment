@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Listing UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>🛒 Product Listing</h2>
+
+<input type="text" id="search" placeholder="Search product..." onkeyup="filterProducts()">
+
+<select id="category" onchange="filterProducts()">
+  <option value="all">All</option>
+  <option value="electronics">Electronics</option>
+  <option value="clothing">Clothing</option>
+</select>
+
+<div id="productContainer"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

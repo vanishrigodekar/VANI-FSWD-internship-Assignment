@@ -1,0 +1,157 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Form Validation</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+width:320px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+label{
+font-weight:bold;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#4CAF50;
+color:white;
+border:none;
+border-radius:5px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#45a049;
+}
+
+.error{
+color:red;
+font-size:13px;
+}
+
+.success{
+color:green;
+text-align:center;
+margin-top:10px;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Registration Form</h2>
+
+<form id="myForm">
+
+<label>Name</label>
+<input type="text" id="name" placeholder="Enter your name">
+<div id="nameError" class="error"></div>
+
+<label>Email</label>
+<input type="text" id="email" placeholder="Enter your email">
+<div id="emailError" class="error"></div>
+
+<label>Password</label>
+<input type="password" id="password" placeholder="Enter password">
+<div id="passwordError" class="error"></div>
+
+<button type="submit">Submit</button>
+
+<div id="successMessage" class="success"></div>
+
+</form>
+
+</div>
+
+<script>
+
+document.getElementById("myForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let name = document.getElementById("name").value.trim();
+let email = document.getElementById("email").value.trim();
+let password = document.getElementById("password").value.trim();
+
+let valid = true;
+
+document.getElementById("nameError").innerText="";
+document.getElementById("emailError").innerText="";
+document.getElementById("passwordError").innerText="";
+document.getElementById("successMessage").innerText="";
+
+if(name === ""){
+document.getElementById("nameError").innerText="Name is required";
+valid=false;
+}
+
+let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+if(email === ""){
+document.getElementById("emailError").innerText="Email is required";
+valid=false;
+}
+else if(!email.match(emailPattern)){
+document.getElementById("emailError").innerText="Enter valid email";
+valid=false;
+}
+
+if(password === ""){
+document.getElementById("passwordError").innerText="Password is required";
+valid=false;
+}
+else if(password.length < 6){
+document.getElementById("passwordError").innerText="Password must be at least 6 characters";
+valid=false;
+}
+
+if(valid){
+document.getElementById("successMessage").innerText="Form submitted successfully!";
+}
+
+});
+
+</script>
+
+</body>
+</html>
+```

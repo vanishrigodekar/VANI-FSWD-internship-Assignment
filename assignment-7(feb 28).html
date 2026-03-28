@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Manager</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    text-align: center;
+}
+
+.container{
+    width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+h2{
+    color: #2c3e50;
+}
+
+input{
+    width: 90%;
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button{
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    background: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background: #2980b9;
+}
+
+#output{
+    margin-top: 20px;
+    text-align: left;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Manager</h2>
+
+<input type="text" id="name" placeholder="Student Name">
+
+<input type="number" id="m1" placeholder="Marks 1">
+<input type="number" id="m2" placeholder="Marks 2">
+<input type="number" id="m3" placeholder="Marks 3">
+
+<br>
+
+<button onclick="addStudent()">Add Student</button>
+
+<div id="output"></div>
+
+</div>
+
+<script>
+
+let students = []; // array to store student objects
+
+function addStudent(){
+
+let name = document.getElementById("name").value;
+let m1 = Number(document.getElementById("m1").value);
+let m2 = Number(document.getElementById("m2").value);
+let m3 = Number(document.getElementById("m3").value);
+
+let avg = (m1 + m2 + m3) / 3;
+
+// student object
+let student = {
+    name: name,
+    marks: [m1, m2, m3],
+    average: avg
+};
+
+students.push(student);
+
+displayStudents();
+}
+
+function displayStudents(){
+
+let result = "<h3>Student List</h3>";
+
+students.forEach(function(s){
+
+result += `
+Name: ${s.name} <br>
+Marks: ${s.marks.join(", ")} <br>
+Average: ${s.average.toFixed(2)} <br>
+<hr>
+`;
+
+});
+
+document.getElementById("output").innerHTML = result;
+
+}
+
+</script>
+
+</body>
+</html>
